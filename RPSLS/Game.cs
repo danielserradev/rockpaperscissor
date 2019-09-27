@@ -59,6 +59,16 @@ namespace RPSLS
                 playerOne = new Human();
                 playerTwo = new Human();
             }
+            else
+            {
+                Console.WriteLine("please enter 1 or 2");
+                
+            }
+            //else if(numberOfPlayers == 0)
+            //{
+            //    playerOne = new Computer();
+            //    playerTwo = new Computer();
+            //}
 
         }
         public void GameLogic()

@@ -16,7 +16,7 @@ namespace RPSLS
         //constructor(Spawner)
         public Player()
         {
-            moves = new List<string>() { "rock", "paper", "scissors", "lizard", "spock" };
+            moves = new List<string>() { "Rock", "Paper", "Scissors", "Lizard", "Spock" };
 
         }
 

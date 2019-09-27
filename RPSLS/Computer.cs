@@ -9,8 +9,14 @@ namespace RPSLS
     class Computer : Player
     {
         //member variables(Has A)
+        Random rng;
+
 
         //constructor(Spawner)
+        public Computer()
+        {
+            rng =  new  Random();
+        }
 
         //member methods(Can Do)
         public override void ChooseName()
@@ -20,10 +26,11 @@ namespace RPSLS
         }
         public override void ChooseMove()
         {
-            moves = new List<string>() { "Rock", "Paper", "Scissors", "Lizard", "Spock" };
-            Random compMove = new Random();
-            string index = compMove.Next(compMove.Count);
-            Console.WriteLine(moves[index]);
+            int move = rng.Next(0, moves.Count);
+            this.move = moves[move];
+
+
+            
         }
     }
 }
