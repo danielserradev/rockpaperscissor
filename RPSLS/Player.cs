@@ -28,4 +28,3 @@ namespace RPSLS
         
     }
 }
-// new List<string>() { "rock", "paper", "scissors", "lizard", "spock" };

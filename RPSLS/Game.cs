@@ -14,7 +14,9 @@ namespace RPSLS
         public string desicion = "";
         public int playerOneScore = 0;
         public int playerTwoScore = 0;
-
+        public int numberOfPlayers;
+        public string choice;
+        
         //constructor(Spawner)
         public Game()
         {
@@ -43,12 +45,32 @@ namespace RPSLS
         }
         public int GetNumberOfPlayers()
         {
-            Console.WriteLine("How many players are playing?");
-            int numberOfPlayers = int.Parse(Console.ReadLine());
+            Console.WriteLine("Are 1 or 2 players playing?");
+            try
+            {
+            numberOfPlayers = int.Parse(Console.ReadLine());
+            }
+            catch(FormatException)
+            {
+                Console.WriteLine("Error: Must enter an integer");
+            }
+            switch (numberOfPlayers)
+            {
+                case 1:
+                    numberOfPlayers = 1;
+                    break;
+                case 2:
+                    numberOfPlayers = 2;
+                    break;
+                default:
+                    GetNumberOfPlayers();
+                    break;
+            }
             return numberOfPlayers;
         }
         public void CreatePlayers(int numberOfPlayers)
         {
+            
             if(numberOfPlayers == 1)
             {
                 playerOne = new Human();
@@ -61,14 +83,9 @@ namespace RPSLS
             }
             else
             {
-                Console.WriteLine("please enter 1 or 2");
-                
+                Console.WriteLine("Error: Please enter '1' or '2'.");
+
             }
-            //else if(numberOfPlayers == 0)
-            //{
-            //    playerOne = new Computer();
-            //    playerTwo = new Computer();
-            //}
 
         }
         public void GameLogic()
@@ -187,9 +204,11 @@ namespace RPSLS
                 desicion = "Spock";
                 Console.WriteLine(playerOne.name + " smashes " + playerTwo.name + "'s " + playerTwo.move + " with " + desicion);
             }
-            //----------------------------------------------------------------------------------------------------
-            //----------------------------------------------------------------------------------------------------
-            
+            //-------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------
+
+
+
 
         }
         public void PlayUntilWinner()
@@ -200,11 +219,12 @@ namespace RPSLS
                 playerTwo.ChooseMove();
                 GameLogic();
                 CheckForWinner();
+                
             }
             while (playerOneScore < 3 && playerTwoScore < 3);
-            
 
         }
+        
         public void CheckForWinner()
         {
             if(playerOne.move == playerTwo.move)
